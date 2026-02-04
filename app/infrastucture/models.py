@@ -13,8 +13,8 @@ class ProductTable(Base):
 
     id: Mapped[uuid.UUID] = mapped_column(primary_key=True,default=uuid.uuid4)
     user_id:Mapped[uuid.UUID] = mapped_column(nullable=False)
-    name: Mapped[str] = mapped_column(String(255))
-    url: Mapped[str] = mapped_column(String(1024))
+    name: Mapped[str] = mapped_column(String(255), nullable=False)
+    url: Mapped[str] = mapped_column(String(1024), nullable=False)
     current_price: Mapped[decimal.Decimal] = mapped_column(Numeric(10,2), nullable=False)
     target_price: Mapped[decimal.Decimal] = mapped_column(Numeric(10,2), nullable=False)
     status: Mapped[Status] = mapped_column(SAEnum(Status),default=Status.ACTIVE, nullable=False)
